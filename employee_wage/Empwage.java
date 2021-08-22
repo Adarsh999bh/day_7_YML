@@ -33,18 +33,26 @@ class Company{
     }
     //end of Employee class
 
-    //basic attributes
+    //basic(fixed) attributes
     public String compName;
     public int max_working_hours_per_month,part_time_hour,full_time_hour,employee_wage_per_hour,no_working_days_per_month;
-    //calculating attributes
-    public int cost_for_comp_part_emp,cost_for_comp_full_emp;
+    //calculating(changing) attributes
+    public int cost_for_comp_part_emp,cost_for_comp_full_emp,no_of_emp;
     public Employee[] ep;
 
     //constructor
-    Company(){
-
+    Company(String compName,int max_working_hours_per_month,int part_time_hour,int full_time_hour,int employee_wage_per_hour,int no_working_days_per_month,int no_of_emp){
+        this.compName=compName;
+        this.max_working_hours_per_month=max_working_hours_per_month;
+        this.part_time_hour=part_time_hour;
+        this.full_time_hour=full_time_hour;
+        this.employee_wage_per_hour=employee_wage_per_hour;
+        this.no_of_emp=no_of_emp;
+        this.no_working_days_per_month=no_working_days_per_month;
+        this.ep=new Employee[this.no_of_emp];
     }
 
+    //company details printing
     public void displayCompDetails(){
         System.out.println("Company name : "+compName);
         System.out.println("Max working hours per month : "+max_working_hours_per_month);
@@ -68,6 +76,21 @@ public class Empwage{
         Company[] cp=new Company[n];
         for(int i=0;i<n;i++){
             System.out.print("Enter the company name : ");
+            String compname=sc_string.nextLine();
+            sc_string.close();
+            System.out.print("Enter the number of employees : ");
+            int no_e=sc_int.nextInt();
+            System.out.print("Enter max working hours per month : ");
+            int mwh=sc_int.nextInt();
+            System.out.print("Enter part-time hour : ");
+            int pt=sc_int.nextInt();
+            System.out.print("Enter full-time hour : ");
+            int ft=sc_int.nextInt();
+            System.out.print("Enter employee wage per hour : ");
+            int wph=sc_int.nextInt();
+            System.out.print("Enter the number of working days in month : ");
+            int wds=sc_int.nextInt();
+            cp[i]=new Company(compname, mwh, pt, ft, wph, wds, no_e);
         }
         sc_int.close();
         sc_string.close();
